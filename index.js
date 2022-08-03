@@ -3,6 +3,7 @@
 
   Keep in mind that your functions must still have and use a parameter for accepting all pokemon.
 */
+const pokemon = require("./pokemon.js");
 const examplePokemon = require("./pokemon.js");
 // Do not change the line above.
 
@@ -35,7 +36,9 @@ const examplePokemon = require("./pokemon.js");
 ];
  */
 
-function getAllPokemonNames() {}
+function getAllPokemonNames() {
+  return pokemon.map(poke => poke.name)
+}
 
 /**
  * checkIfAnyPokemonWeighsLessThan()
@@ -116,7 +119,51 @@ function filterByType() {}
  *  //>  false
  */
 
-function checkMinBaseExperience(pokemon, baseExperience) {}
+function checkMinBaseExperience() {}
+
+
+
+/**
+ * findType()
+ * -----------------------------
+ * Returns an array of pokemon where the key is the name and the value is the FIRST type in the array of types. If the pokemon array is empty, throw an error
+ * @param {Object[]} pokemon - An array of pokemon. See the `pokemon.js` file for an example of this array.
+ * @returns {Boolean|Error} An array of pokemon || Error
+ *
+ * NOTE: You must use the .map() & find() methods.
+ *
+ * EXAMPLE:
+ *  findType(pokemon));
+ *  //>  
+ *  [
+      { bulbasaur: 'grass' },
+      { ivysaur: 'grass' },
+      { venusaur: 'grass' },
+      { charmander: 'fire' },
+      { charmeleon: 'fire' },
+      { charizard: 'fire' },
+      { squirtle: 'water' },
+      { wartortle: 'water' },
+      { blastoise: 'water' },
+      { caterpie: 'bug' },
+      { metapod: 'bug' },
+      { butterfree: 'bug' },
+      { weedle: 'bug' },
+      { kakuna: 'bug' },
+      { beedrill: 'bug' },
+      { pidgey: 'normal' },
+      { pidgeotto: 'normal' },
+      { pidgeot: 'normal' },
+      { rattata: 'normal' },
+      { raticate: 'normal' },
+      { spearow: 'normal' },
+      { fearow: 'normal' },
+      ...
+    ]
+ */
+
+
+const findType = () => {}
 
 module.exports = {
   getAllPokemonNames,
@@ -124,4 +171,5 @@ module.exports = {
   findByName,
   filterByType,
   checkMinBaseExperience,
+  findType
 };

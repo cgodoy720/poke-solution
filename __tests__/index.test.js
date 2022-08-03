@@ -3,7 +3,8 @@ const {
   checkIfAnyPokemonWeighsLessThan,
   findByName,
   filterByType,
-  checkMinBaseExperience
+  checkMinBaseExperience,
+  findType
 } = require("..");
 
 const pokemon = require("../pokemon");
@@ -13,7 +14,7 @@ describe("getAllPokemonNames()", () => {
     const text = getAllPokemonNames.toString();
     expect(text).toMatch(/\.map\(.*\)/s);
   });
-  test("should throw an error if there is only one movie", () => {
+  test("should throw an error if there is only one pokemon", () => {
     const actual = () => getAllPokemonNames(["Just One Pokemon"]);
     expect(actual).toThrow();
   });
@@ -181,3 +182,66 @@ describe("checkMinBaseExperience()", () => {
     expect(actual).toEqual(expected);
   });
 });
+
+
+describe("findType()", () => {
+  test("should throw an error if there are no pokemon", () => {
+    const actual = () => findType([]);
+    expect(actual).toThrow();
+  });
+  test("should use the `.map()` method", () => {
+    const text = findType.toString();
+    expect(text).toMatch(/\.map\(.*\)/s);
+  });
+  test("should use the `.find()` method", () => {
+    const text = findType.toString();
+    expect(text).toMatch(/\.find\(.*\)/s);
+  });
+  test("should return an array of objects, where the name is the key & value is the type", () => {
+    const actual = findType(pokemon);
+    const expected = [
+      { bulbasaur: 'grass' },
+      { ivysaur: 'grass' },
+      { venusaur: 'grass' },
+      { charmander: 'fire' },
+      { charmeleon: 'fire' },
+      { charizard: 'fire' },
+      { squirtle: 'water' },
+      { wartortle: 'water' },
+      { blastoise: 'water' },
+      { caterpie: 'bug' },
+      { metapod: 'bug' },
+      { butterfree: 'bug' },
+      { weedle: 'bug' },
+      { kakuna: 'bug' },
+      { beedrill: 'bug' },
+      { pidgey: 'normal' },
+      { pidgeotto: 'normal' },
+      { pidgeot: 'normal' },
+      { rattata: 'normal' },
+      { raticate: 'normal' },
+      { spearow: 'normal' },
+      { fearow: 'normal' },
+      { ekans: 'poison' },
+      { arbok: 'poison' },
+      { pikachu: 'electric' },
+      { raichu: 'electric' },
+      { sandshrew: 'ground' },
+      { sandslash: 'ground' },
+      { 'nidoran-f': 'poison' },
+      { nidorina: 'poison' },
+      { nidoqueen: 'poison' },
+      { 'nidoran-m': 'poison' },
+      { nidorino: 'poison' },
+      { nidoking: 'poison' },
+      { clefairy: 'fairy' },
+      { clefable: 'fairy' },
+      { vulpix: 'fire' },
+      { ninetales: 'fire' },
+      { jigglypuff: 'normal' },
+      { wigglytuff: 'normal' }
+    ]
+    expect(actual).toEqual(expected);
+  });
+})
+
