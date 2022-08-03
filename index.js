@@ -36,9 +36,7 @@ const examplePokemon = require("./pokemon.js");
 ];
  */
 
-function getAllPokemonNames() {
-  return pokemon.map(poke => poke.name)
-}
+function getAllPokemonNames() {}
 
 /**
  * checkIfAnyPokemonWeighsLessThan()
@@ -163,7 +161,9 @@ function checkMinBaseExperience() {}
  */
 
 
-const findType = () => {}
+const findType = () => {
+  
+}
 
 module.exports = {
   getAllPokemonNames,
