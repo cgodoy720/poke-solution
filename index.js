@@ -107,7 +107,7 @@ function filterByType() {}
 /**
  * checkMinBaseExperience()
  * -----------------------------
- * Returns either true or false depending whether all pokemon have a minimum metascore. If the movie array is empty, throw an error with a message.
+ * Returns either true or false depending whether all pokemon have a minimum metascore. If the pokemon array is empty, throw an error with a message.
  * @param {Object[]} pokemon - An array of pokemon. See the `pokemon.js` file for an example of this array.
  * @param {number} baseExperience - A minimum metascore number. (e.g. 80)
  * @returns {Boolean|Error} A boolean
