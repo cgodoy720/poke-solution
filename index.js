@@ -36,7 +36,18 @@ const examplePokemon = require("./pokemon.js");
 ];
  */
 
-function getAllPokemonNames() {}
+function getAllPokemonNames(pokemon) {
+  if(!pokemon.length){
+    throw console.error()
+  }
+  if(pokemon.length === 1){
+    throw console.error()
+  }
+
+  const pokemonNames = pokemon.map(({ name }) => name)
+  return pokemonNames
+
+}
 
 /**
  * checkIfAnyPokemonWeighsLessThan()
@@ -56,7 +67,9 @@ function getAllPokemonNames() {}
  *  checkIfAnyPokemonWeighsLessThan(pokemon, 18);
  *  //> false
  */
-function checkIfAnyPokemonWeighsLessThan() {}
+function checkIfAnyPokemonWeighsLessThan(pokemon, w="100") {
+  return pokemon.some(({ weight }) => weight < w)
+}
 
 /**
  * findByName()
@@ -74,7 +87,9 @@ function checkIfAnyPokemonWeighsLessThan() {}
       // clefable
     };
  */
-function findByName() {}
+function findByName(pokemon, name1) {
+  return pokemon.find(({ pokeId }) => pokeId === name1) || null
+}
 
 /**
  * filterByType()
@@ -100,7 +115,19 @@ function findByName() {}
  *  filterByType(pokemon, "psychic")
  *  //> []
  */
-function filterByType() {}
+function filterByType(pokemon, type) {
+  // Returning output of the filter() without setting a variable
+  // return pokemon.filter(poke => {
+  //   return poke.types.find(pokeType => pokeType.type.name === type.toLowerCase())
+  // })
+
+  // Setting the output to a var
+  const filteredPokemon = pokemon.filter(poke => {
+    const typeFound = poke.types.find(pokeType => pokeType.type.name === type.toLowerCase())
+    return typeFound
+  })
+  return filteredPokemon
+}
 
 /**
  * checkMinBaseExperience()
@@ -117,7 +144,9 @@ function filterByType() {}
  *  //>  false
  */
 
-function checkMinBaseExperience() {}
+function checkMinBaseExperience(pokemon, baseExperience) {
+  return pokemon.every(poke => poke.base_experience >= baseExperience)
+}
 
 
 
@@ -126,7 +155,7 @@ function checkMinBaseExperience() {}
  * -----------------------------
  * Returns an array of pokemon where the key is the name and the value is the FIRST type in the array of types. If the pokemon array is empty, throw an error
  * @param {Object[]} pokemon - An array of pokemon. See the `pokemon.js` file for an example of this array.
- * @returns {Boolean|Error} An array of pokemon || Error
+ * @returns {Object[]|Error} An array of pokemon || Error
  *
  * NOTE: You must use the .map() & find() methods.
  *
@@ -161,8 +190,27 @@ function checkMinBaseExperience() {}
  */
 
 
-const findType = () => {
-  
+const findType = (pokemon) => {
+  //guard clause
+  if(!pokemon.length){
+    throw "Error, no pokemon!"
+  }
+
+  // return pokemon.map((el) => {
+  //   let val = undefined
+  //   el.types.find((inEl) => {
+  //     val = inEl.type.name
+  //     return val
+  //   })
+  //   return { [el.name]: val }
+  // })
+
+
+  return pokemon.map((el) => {
+    const slotOne = el.types.find((type) => type.slot === 1)
+    return { [el.name]: slotOne.type.name }
+  })
+
 }
 
 module.exports = {
